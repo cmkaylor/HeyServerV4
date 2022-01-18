@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             x:Class="HeyServerV4.Log"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame
+            HorizontalOptions="FillAndExpand"
+            HeightRequest="20"
+            Padding="20"
+                BackgroundColor="Orange"
+                >
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="&#xe801;" 
+                       x:Name="LevelUp" 
+                       FontFamily="{StaticResource CustomFont}" 
+                       FontSize="20" 
+                       TextColor="White"
+                           Margin="0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer 
+                            Tapped="ImageButton_Clicked"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"
+                           HorizontalTextAlignment="Center"
+                    Text="Tip Log"
+                           FontAttributes="Bold"
+                   TextColor="White"
+                   FontSize="15"
+                           Margin="0"/>
+                    <Label Text="    "/>
+                </StackLayout>
+            </Frame>
+        
+        <flv:FlowListView
+            x:Name="lst"
+            FlowColumnCount="4"
+            SeparatorVisibility="Default"
+            HasUnevenRows="True"
+            HeightRequest="100"
+            Margin="10,0"
+            FlowItemTapped="lst_FlowItemTapped">
+
+            <flv:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                    <Frame HeightRequest = "100"
+                               WidthRequest = "100"
+                               BackgroundColor="Orange"
+                           Padding="0"
+                           Margin="10">
+                        <StackLayout>
+                            <Label HorizontalOptions="CenterAndExpand" 
+                                   HorizontalTextAlignment="Center"
+                               VerticalOptions="Center"
+                               TextColor="White"
+                               Text="{Binding StringofMonth}"/>
+                            <Label HorizontalOptions="CenterAndExpand" 
+                                   HorizontalTextAlignment="Center"
+                               VerticalOptions="CenterAndExpand"
+                               TextColor="White"
+                               Text="{Binding YearOfThatMonth}"/>
+                            <Label HorizontalOptions="CenterAndExpand" 
+                                   HorizontalTextAlignment="Center"
+                               VerticalOptions="CenterAndExpand"
+                               TextColor="White"
+                               Text="{Binding MonthTotal, StringFormat='${0}'}"/>
+                        </StackLayout>
+                    </Frame>
+
+                </DataTemplate>
+
+            </flv:FlowListView.FlowColumnTemplate>
+
+
+
+        </flv:FlowListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

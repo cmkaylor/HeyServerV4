@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HeyServerV4.MainPage"
+             xmlns:flv ="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="Icons" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource CustomFont}" />
+                <Setter Property="FontSize" Value="30" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="WidthRequest" Value="40" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+        <Frame
+            HorizontalOptions="FillAndExpand"
+            HeightRequest="20"
+            Padding="20"
+            BackgroundColor="Orange">
+            <StackLayout Orientation="Horizontal">
+                <Label VerticalOptions="StartAndExpand"
+                       HorizontalOptions="StartAndExpand"
+                    Text="HeyServer"
+                   TextColor="White"
+                       FontAttributes="Bold"
+                   FontSize="15"/>
+                <Ellipse BackgroundColor="Transparent"
+                        WidthRequest="30"
+                        HeightRequest="20"
+                         HorizontalOptions="EndAndExpand"/>
+
+                <Label Text="&#xf133;" 
+                       x:Name="CalendarEmpty" 
+                       FontFamily="{StaticResource CustomFont}" 
+                       FontSize="20" 
+                       TextColor="White" 
+                       Margin="5,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Tapped="ImageButton_Clicked_1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Label Text="&#xe800;" 
+                       x:Name="Target" 
+                       FontFamily="{StaticResource CustomFont}" 
+                       FontSize="20" 
+                       TextColor="White"
+                       Margin="5,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ImageButton_Clicked"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </StackLayout>
+        </Frame>
+
+        <StackLayout Margin="8">
+            <Label Text="{Binding MonthsName}"
+               FontSize="20"
+               HorizontalOptions="CenterAndExpand" 
+               VerticalOptions="CenterAndExpand"
+               TextColor="Black"/>
+            <Label Text="{Binding MonthsTotal, StringFormat='Total Tips: ${0}'}"
+                   FontSize="10"
+               HorizontalOptions="CenterAndExpand" 
+               VerticalOptions="CenterAndExpand"
+               TextColor="Black"/>
+        </StackLayout>
+
+        <StackLayout Margin="0">
+            <flv:FlowListView
+            x:Name="firstlst"
+            FlowColumnCount="7"
+            RowHeight="50"
+            WidthRequest="50"
+            SeparatorVisibility="Default"
+            Margin="10,0">
+
+            <flv:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                    <Frame BackgroundColor="Transparent"
+                           Padding="0">
+                        <StackLayout>
+                            <Label HorizontalOptions="CenterAndExpand" 
+                                   HorizontalTextAlignment="Center"
+                               VerticalOptions="CenterAndExpand"
+                               TextColor="Gray"
+                               Text="{Binding}"/>
+                        </StackLayout>
+                    </Frame>
+
+                </DataTemplate>
+
+            </flv:FlowListView.FlowColumnTemplate>
+
+
+
+        </flv:FlowListView>
+        </StackLayout>
+        <StackLayout Margin="0">
+            <flv:FlowListView
+            x:Name="lst"
+            FlowColumnCount="7"
+            RowHeight="50"
+            WidthRequest="50"
+            SeparatorVisibility="Default"
+            Margin="10,0"
+                FlowItemTapped="lst_FlowItemTapped">
+
+            <flv:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                        <Frame BorderColor="{Binding Border}"
+                               CornerRadius = "25"
+                               HeightRequest = "50"
+                               WidthRequest = "50"
+                               Padding="0"
+                               BackgroundColor="{Binding BackGroundColor}">
+                            <StackLayout>
+                            <Label HorizontalOptions="CenterAndExpand" 
+                                   HorizontalTextAlignment="Center"
+                               VerticalOptions="CenterAndExpand"
+                               TextColor="Orange"
+                               Text="{Binding DayNumber}"/>
+                        </StackLayout>
+                    </Frame>
+
+                </DataTemplate>
+
+            </flv:FlowListView.FlowColumnTemplate>
+
+
+
+        </flv:FlowListView>
+        </StackLayout>
+        
+        
+    </StackLayout>
+
+</ContentPage>

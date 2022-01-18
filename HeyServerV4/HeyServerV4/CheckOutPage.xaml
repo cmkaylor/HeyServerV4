@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HeyServerV4.CheckOutPage"
+             xmlns:pinch="clr-namespace:Xamarin.Forms.PinchZoomImage;assembly=Xamarin.Forms.PinchZoomImage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <ContentPage.Content>
+    <StackLayout>
+        <Frame
+            HorizontalOptions="FillAndExpand"
+            HeightRequest="20"
+            BackgroundColor="Orange">
+            <StackLayout Orientation="Horizontal">
+                <Grid>
+                        <Label Text="&#xe801;" 
+                       x:Name="LevelUp" 
+                       FontFamily="{StaticResource CustomFont}" 
+                       FontSize="20" 
+                       TextColor="White"
+                       Margin="5,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer 
+                            Tapped="Button_Clicked_1"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+                <Label VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="EndAndExpand"
+                    Text="Checkout Receipt"
+                       FontSize="15"
+                       FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                   TextColor="White"/>
+                <Ellipse BackgroundColor="Orange"
+                        WidthRequest="40"
+                        HeightRequest="50"
+                         HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+        </Frame>
+        <Grid 
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand" >
+            <pinch:PinchZoom>
+                <pinch:PinchZoom.Content>
+                    <Image x:Name="resultImage"/>
+                </pinch:PinchZoom.Content>
+            </pinch:PinchZoom>
+            <Button Text="{Binding Name}"
+                    Margin="20"
+                    HorizontalOptions="CenterAndExpand"
+                    BackgroundColor="Orange"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand"
+                Clicked="Button_Clicked"/>
+        </Grid>
+    </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

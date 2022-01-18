@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             x:Class="HeyServerV4.LogCalendar"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame
+            HorizontalOptions="FillAndExpand"
+            HeightRequest="20"
+            Padding="20"
+                BackgroundColor="Orange">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="&#xe801;" 
+                       x:Name="LevelUp" 
+                       FontFamily="{StaticResource CustomFont}" 
+                       FontSize="20" 
+                       TextColor="White" 
+                       Margin="5,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer 
+                            Tapped="ImageButton_Clicked_2"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <Label Text="Calendar Log"
+                           HorizontalOptions="CenterAndExpand"
+                           HorizontalTextAlignment="Center"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           FontSize="15"
+                           />
+
+                    <Label Text="       "/>
+                </StackLayout>
+            </Frame>
+
+            <StackLayout Margin="8">
+                <Label Text="{Binding MonthsName}"
+               FontSize="20"
+               HorizontalOptions="CenterAndExpand" 
+               VerticalOptions="CenterAndExpand"
+               TextColor="Black"/>
+                <Label Text="{Binding MonthsTotal, StringFormat='Total Tips: ${0}'}"
+                   FontSize="10"
+               HorizontalOptions="CenterAndExpand" 
+               VerticalOptions="CenterAndExpand"
+               TextColor="Black"/>
+            </StackLayout>
+
+            <StackLayout Margin="0">
+                <flv:FlowListView
+            x:Name="firstlst"
+            FlowColumnCount="7"
+            RowHeight="50"
+            WidthRequest="50"
+            SeparatorVisibility="Default"
+            Margin="10,0">
+
+                    <flv:FlowListView.FlowColumnTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="Transparent"
+                           Padding="0">
+                                <StackLayout>
+                                    <Label HorizontalOptions="CenterAndExpand" 
+                                   HorizontalTextAlignment="Center"
+                               VerticalOptions="CenterAndExpand"
+                               TextColor="Gray"
+                               Text="{Binding}"/>
+                                </StackLayout>
+                            </Frame>
+
+                        </DataTemplate>
+
+                    </flv:FlowListView.FlowColumnTemplate>
+
+
+
+                </flv:FlowListView>
+            </StackLayout>
+            <StackLayout Margin="0">
+                <flv:FlowListView
+            x:Name="lst"
+            FlowColumnCount="7"
+            RowHeight="50"
+            WidthRequest="50"
+            SeparatorVisibility="Default"
+            Margin="10,0"
+                FlowItemTapped="lst_FlowItemTapped">
+
+                    <flv:FlowListView.FlowColumnTemplate>
+                        <DataTemplate>
+                            <Frame BorderColor="{Binding Border}"
+                               CornerRadius = "25"
+                               HeightRequest = "50"
+                               WidthRequest = "50"
+                               Padding="0"
+                               BackgroundColor="{Binding BackGroundColor}">
+                                <StackLayout>
+                                    <Label HorizontalOptions="CenterAndExpand" 
+                                   HorizontalTextAlignment="Center"
+                               VerticalOptions="CenterAndExpand"
+                               TextColor="Orange"
+                               Text="{Binding DayNumber}"/>
+                                </StackLayout>
+                            </Frame>
+
+                        </DataTemplate>
+
+                    </flv:FlowListView.FlowColumnTemplate>
+
+
+
+                </flv:FlowListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
